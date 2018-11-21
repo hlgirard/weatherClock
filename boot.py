@@ -16,5 +16,9 @@ def do_connect():
     print('network config:', sta_if.ifconfig())
 
 
+def install_dependencies():
+    import upip
+    upip.install("micropython-urequests")
 
 
+do_connect()
