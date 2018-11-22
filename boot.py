@@ -1,5 +1,12 @@
+# This file is executed on every boot (including wake-boot from deepsleep)
+#import esp
+#esp.osdebug(None)
+import gc
+#import webrepl
+#webrepl.start()
+
 # Import credentials
-from credentials import *
+from credentials import wifi_password, wifi_ssid
 
 def do_connect():
     '''
@@ -14,11 +21,10 @@ def do_connect():
         while not sta_if.isconnected():
             pass
     print('network config:', sta_if.ifconfig())
+    print('Disabling access point interface')
+    ap_if = network.WLAN(network.AP_IF)
+    ap_if.active(False)
 
 
-def install_dependencies():
-    import upip
-    upip.install("micropython-urequests")
-
-
+gc.collect()
 do_connect()

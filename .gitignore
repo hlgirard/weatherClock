@@ -106,3 +106,7 @@ venv.bak/
 # Confidential Information
 credentials.py
 weatherdata.json
+
+# Visual Studio Code
+.micropythonrc
+.vscode/
