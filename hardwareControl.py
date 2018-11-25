@@ -66,3 +66,16 @@ class TempServo(Servo):
             self.goto(angle)
         else:
             raise ValueError('Temperature is outside permissible range')
+
+class CategoryServo(Servo):
+
+    def __init__(self, pin, numCategories):
+        Servo.__init__(self, pin)
+        self.numCat = numCategories
+
+    def setCategory(self, category):
+        if category < 0 or category > self.numCat:
+            raise ValueError('Category outside allowable range')
+        else:
+            angle = category / self.numCat * 180
+            self.goto(angle)
