@@ -58,7 +58,7 @@ def get_forecast_live():
 
 def get_weather():
     try:
-        with open(SAVE_FILE, 'r') as f:
+        with open(SAVE_FILE, 'w') as f:
             data = json.load(f)
             curTime = int(time.time()) + DELTA_T
             if curTime - data['call_dt'] < INTERVAL:
@@ -76,7 +76,7 @@ def get_weather():
 
 def get_forecast():
     try:
-        with open(SAVE_FORECAST, 'r') as f:
+        with open(SAVE_FORECAST, 'w') as f:
             data = json.load(f)
             curTime = int(time.time()) + DELTA_T
             if curTime - data['call_dt'] < INTERVAL:
